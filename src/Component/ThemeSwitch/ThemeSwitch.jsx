@@ -37,7 +37,11 @@ const SunIcon = (props) => (
 
 export default function ThemeSwitch() {
   const [theme, settheme] = useState(false);
-  console.log(theme);
+
+  const handleThemeChange = () => {
+    settheme(!theme);
+    console.log(theme);
+  };
 
   return (
     <Switch
@@ -46,7 +50,7 @@ export default function ThemeSwitch() {
       color="success"
       startContent={<SunIcon />}
       endContent={<MoonIcon />}
-      // onChange={settheme(!theme)}
+      onChange={handleThemeChange}
     ></Switch>
   );
 }

@@ -13,7 +13,9 @@ export default {
         Poppins: "'Poppins', serif",
         playfaire: "'Playfair Display', serif",
       },
+      colors: {},
     },
   },
   plugins: [nextui()],
+  darkMode: "class"
 };
