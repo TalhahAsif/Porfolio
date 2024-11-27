@@ -13,9 +13,14 @@ export default {
         Poppins: "'Poppins', serif",
         playfaire: "'Playfair Display', serif",
       },
-      colors: {},
+      colors: {
+        text_silver: "#C0C5C1",
+        bg_rich_Black: "#0E0F19",
+        bg_Vanila: "#E9EB9E",
+        bg_cream: "#F3F9D2",
+      },
     },
   },
   plugins: [nextui()],
-  darkMode: "class"
+  darkMode: "class",
 };

@@ -1,5 +1,6 @@
 import { Switch } from "@nextui-org/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DarkmodeContext } from "../../context/theme";
 
 const MoonIcon = (props) => (
   <svg
@@ -35,12 +36,13 @@ const SunIcon = (props) => (
   </svg>
 );
 
-export default function ThemeSwitch() {
-  const [theme, settheme] = useState(false);
+export default function ThemeSwitch({ className }) {
+  const { darkmode, setDarkmode } = useContext(DarkmodeContext);
+
+  console.log("darkmode from context ===>", darkmode);
 
   const handleThemeChange = () => {
-    settheme(!theme);
-    console.log(theme);
+    setDarkmode(!darkmode);
   };
 
   return (
@@ -51,6 +53,7 @@ export default function ThemeSwitch() {
       startContent={<SunIcon />}
       endContent={<MoonIcon />}
       onChange={handleThemeChange}
+      className={className}
     ></Switch>
   );
 }
