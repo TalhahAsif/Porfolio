@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="w-full md:w-1/2 h-20 rounded-full flex justify-center gap-3 items-center text-xl text-center backdrop-blur-sm bg-black/10 dark:bg-white/30">
           {Navs.map((data, index) => {
             return (
-              <p className="w-[21%] py-2 rounded-full dark:text-white hover:bg-black hover:text-white cursor-pointer duration-500">
+              <p key={index} className="w-[21%] py-2 rounded-full dark:text-white hover:bg-black hover:text-white cursor-pointer duration-500">
                 {data}
               </p>
             );

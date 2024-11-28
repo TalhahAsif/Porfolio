@@ -7,6 +7,7 @@ import { Button, Image } from "@nextui-org/react";
 import Banner from "../src/assets/Banner.png";
 import { DarkmodeContext } from "./context/theme";
 import ServicesScroll from "./Component/ServicesScroll/ServicesScroll";
+import Skills from "./Component/Skills/Skills";
 
 function App() {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
@@ -30,10 +31,19 @@ function App() {
               and user-friendly web applications. Let's build something amazing
               together! 🚀
             </div>
+
+            {/* // Services */}
+
             <div className="dark:text-text_silver text-left mt-20">
               <p className="font-bold text-4xl">Services we offer</p>
               <ServicesScroll />
             </div>
+          </section>
+
+          {/* //SKILLS */}
+
+          <section>
+            <Skills />
           </section>
         </div>
       </section>
