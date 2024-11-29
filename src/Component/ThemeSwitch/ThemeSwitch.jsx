@@ -1,6 +1,6 @@
 import { Switch } from "@nextui-org/react";
 import { useContext, useState } from "react";
-import { DarkmodeContext } from "../../context/theme";
+import { DarkmodeContext } from "../../Contextss/Theme";
 
 const MoonIcon = (props) => (
   <svg

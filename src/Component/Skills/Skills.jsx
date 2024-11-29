@@ -1,42 +1,74 @@
 import React from "react";
+import HTMLlogo from "../../assets/tech-Icons/HTML.png";
+import CSSlogo from "../../assets/tech-Icons/CSS3.png";
+import tailwind from "../../assets/tech-Icons/Tailwind-CSS.png";
+import JS from "../../assets/tech-Icons/JS.png";
+import Reactjs from "../../assets/tech-Icons/React.png";
+import Next from "../../assets/tech-Icons/Next.js.png";
+import DownloadCV from "../DownloadCV/DowloadCV";
 
 const Skills = () => {
   const techStack = [
     {
+      logo: HTMLlogo,
       title: "HTML",
-      intro:
-        "HTML (HyperText Markup Language) is the standard markup language used to create web pages. It structures the content on the web and defines elements like headings, paragraphs, images, and links.",
+      intro: "The backbone for web pages, structuring content with elements.",
     },
     {
+      logo: CSSlogo,
       title: "CSS",
       intro:
-        "CSS (Cascading Style Sheets) is used to style and layout web pages. It allows developers to add colors, fonts, and spacing to HTML elements, making the web content visually appealing and responsive.",
+        "Styles and layouts web pages for visual appeal and responsiveness.",
     },
     {
+      logo: JS,
       title: "JavaScript",
       intro:
-        "JavaScript is a versatile programming language that enables interactive web pages. It allows developers to create dynamic content, control multimedia, animate images, and handle user inputs effectively.",
+        "Enables interactive web pages with dynamic content and user inputs.",
     },
     {
+      logo: Reactjs,
       title: "React.js",
-      intro:
-        "React.js is a popular JavaScript library for building user interfaces, particularly single-page applications. It uses a component-based architecture, allowing developers to create reusable UI components.",
+      intro: "JavaScript library for building reusable UI components.",
     },
     {
+      logo: tailwind,
       title: "Tailwind CSS",
-      intro:
-        "Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs directly in the HTML. It helps in creating responsive and modern web designs quickly and efficiently.",
+      intro: "Utility-first CSS framework for custom designs directly in HTML.",
     },
     {
+      logo: Next,
       title: "Next.js",
       intro:
-        "Next.js is a React-based framework that enables server-side rendering and static site generation. It enhances the performance and SEO of web applications while providing a robust developer experience with features like API routes, built-in CSS support, and dynamic routing.",
+        "React-based framework for server-side rendering and static sites.",
     },
   ];
 
   return (
     <>
-      <section></section>
+      <section>
+        <div>
+          <p className="text-4xl font-bold text-left">Skills</p>
+          <DownloadCV />
+        </div>
+        <div className="mt-10 gap-10 grid md:grid-cols-1 lg:grid-cols-2">
+          {techStack.map((data, index) => {
+            return (
+              <div className="p-8 border-b border-text_silver flex flex-col gap-5">
+                <div className="flex items-center gap-5">
+                  <img src={data.logo} alt="" className="w-24" />
+                  <p className="dark:text-text_silver text-3xl font-bold">
+                    {data.title}
+                  </p>
+                </div>
+                <div className="w-[90%] m-auto">
+                  <p className="text-xl text-left">{data.intro}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 };

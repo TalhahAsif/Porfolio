@@ -5,9 +5,9 @@ import "./App.css";
 import Navbar from "./Component/Navbar/Navbar";
 import { Button, Image } from "@nextui-org/react";
 import Banner from "../src/assets/Banner.png";
-import { DarkmodeContext } from "./context/theme";
 import ServicesScroll from "./Component/ServicesScroll/ServicesScroll";
 import Skills from "./Component/Skills/Skills";
+import { DarkmodeContext } from "./Contextss/Theme";
 
 function App() {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
@@ -42,7 +42,7 @@ function App() {
 
           {/* //SKILLS */}
 
-          <section>
+          <section className="my-24 dark:text-text_silver">
             <Skills />
           </section>
         </div>
