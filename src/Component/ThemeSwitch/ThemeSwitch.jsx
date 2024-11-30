@@ -48,7 +48,7 @@ export default function ThemeSwitch({ className }) {
   return (
     <Switch
       defaultSelected
-      size="lg"
+      size="sm"
       color="success"
       startContent={<SunIcon />}
       endContent={<MoonIcon />}

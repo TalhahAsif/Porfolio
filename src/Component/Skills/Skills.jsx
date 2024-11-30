@@ -47,22 +47,22 @@ const Skills = () => {
   return (
     <>
       <section>
-        <div>
-          <p className="text-4xl font-bold text-left">Skills</p>
+        <div className="flex justify-between">
+          <p className="text-3xl font-bold text-left">Skills</p>
           <DownloadCV />
         </div>
-        <div className="mt-10 gap-10 grid md:grid-cols-1 lg:grid-cols-2">
+        <div className="mt-10 px-20 gap-10 grid md:grid-cols-1 lg:grid-cols-2 m-auto">
           {techStack.map((data, index) => {
             return (
-              <div className="p-8 border-b border-text_silver flex flex-col gap-5">
+              <div className="p-8 border-b flex flex-col gap-5">
                 <div className="flex items-center gap-5">
-                  <img src={data.logo} alt="" className="w-24" />
-                  <p className="dark:text-text_silver text-3xl font-bold">
+                  <img src={data.logo} alt="" className="w-14" />
+                  <p className="dark:text-text_silver text-2xl font-bold">
                     {data.title}
                   </p>
                 </div>
-                <div className="w-[90%] m-auto">
-                  <p className="text-xl text-left">{data.intro}</p>
+                <div className="w-[80%] m-auto">
+                  <p className="text-md text-left">{data.intro}</p>
                 </div>
               </div>
             );

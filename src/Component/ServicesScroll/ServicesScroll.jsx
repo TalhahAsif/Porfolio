@@ -54,18 +54,18 @@ const ServicesScroll = () => {
 
   return (
     <>
-      <div className="grid gap-10 text-2xl mt-10 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-10 text-xl mt-10 md:grid-cols-2 lg:grid-cols-3">
         {services.map((data, index) => {
           return (
             <div
               key={data.id}
-              className="dark:text-slate-50 backdrop-blur-sm bg-black/10 dark:bg-white/30 rounded-2xl shadow-2xl	"
+              className="dark:text-slate-50 backdrop-blur-sm bg-black/10 dark:bg-white/30 rounded-2xl shadow-2xl"
             >
-              <div className="p-10 flex justify-center flex-col gap-6 h-[440px] rounded-2xl">
-                <p className="font-bold text-4xl dark:text-yellow-400">
+              <div className="p-10 flex justify-center flex-col gap-6 h-[350px] rounded-2xl">
+                <p className="font-bold text-2xl dark:text-yellow-400">
                   {data.title}
                 </p>
-                <p className="text-[15px]">{data.description}</p>
+                <p className="text-sm">{data.description}</p>
               </div>
             </div>
           );
