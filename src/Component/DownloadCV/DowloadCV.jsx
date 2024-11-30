@@ -4,7 +4,7 @@ import React from "react";
 const DownloadCV = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "http://localhost:5173/Talhah-Asif.pdf";
+    link.href = process.env.CV_DOWNLOAD;
     link.download = "TalhahAsif.pdf";
     link.click();
   };
