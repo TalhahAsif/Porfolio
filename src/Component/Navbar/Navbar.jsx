@@ -23,7 +23,7 @@ const Navbar = () => {
               <a
                 href={data.id}
                 key={index}
-                className="rounded-full dark:text-white hover:bg-black hover:text-white cursor-pointer duration-500"
+                className="rounded-full dark:text-white hover:bg-black hover:text-white cursor-pointer duration-500 "
               >
                 <p className="mx-2 my-1">{data.section}</p>
               </a>

@@ -35,6 +35,8 @@ const Projects = () => {
       thumbnail: todoapp,
       techstack: ["React.js", "tailwind CSS"],
       specs: ["Responsive", "Filters", "Clean UI & UX"],
+      liveLink: "https://anytask-sepia.vercel.app/",
+      githublink: "https://github.com/TalhahAsif/React-Todo-App-SMIT",
     },
     {
       id: 2,
@@ -49,6 +51,8 @@ const Projects = () => {
         "Add to Cart",
         "API Integration",
       ],
+      liveLink: "https://firebaseemailauth.netlify.app/",
+      githublink: "https://github.com/TalhahAsif/E-Commerce-JS-Firebase",
     },
     {
       id: 3,
@@ -56,6 +60,8 @@ const Projects = () => {
       thumbnail: GuessTheNumber,
       techstack: ["HTML", "CSS"],
       specs: ["Responsive", "Clean UI & UX"],
+      liveLink: "https://smit-number-game.netlify.app/",
+      githublink: "https://github.com/TalhahAsif/Number-Game",
     },
     {
       id: 4,
@@ -63,6 +69,8 @@ const Projects = () => {
       thumbnail: AppleClone,
       techstack: ["React.js", "tailwind CSS"],
       specs: ["Responsive", "Clean UI & UX"],
+      liveLink: "https://superb-lokum-fb5998.netlify.app/",
+      githublink: "https://github.com/TalhahAsif/Apple-Website-Clone",
     },
   ];
 
@@ -102,10 +110,16 @@ const Projects = () => {
                 })}
               </div>
               <div className="flex gap-4 ">
-                <Button className="bg-yellow-200 text-black shadow-lg">
-                  {<PublicIcon />}Live
-                </Button>
-                <Button className="bg-green-400 text-black shadow-lg"> {<CodeIcon />} Code</Button>
+                <a target="#" href={selectedProject[0].liveLink}>
+                  <Button className="bg-yellow-200 text-black shadow-lg">
+                    {<PublicIcon />}Live
+                  </Button>
+                </a>
+                <a target="#" href={selectedProject[0].githublink}>
+                  <Button className="bg-green-400 text-black shadow-lg">
+                    {<CodeIcon />} Code
+                  </Button>
+                </a>
               </div>
             </section>
           </div>

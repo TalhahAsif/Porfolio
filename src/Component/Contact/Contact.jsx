@@ -1,0 +1,85 @@
+import { div } from "framer-motion/client";
+import React, { useContext } from "react";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { DarkmodeContext } from "../../Contextss/Theme";
+
+const sociallink = [
+  {
+    title: "GitHub",
+    link: "https://github.com/talhahasif",
+    lightIcon:
+      "https://img.icons8.com/?size=100&id=62856&format=png&color=FFFFFF",
+    darkicon:
+      "https://img.icons8.com/?size=100&id=62856&format=png&color=000000",
+  },
+  {
+    title: "Linkedin",
+    link: "https://www.linkedin.com/in/talha-asif-83b80522b/",
+    darkicon:
+      "https://img.icons8.com/?size=100&id=8808&format=png&color=000000",
+    lightIcon:
+      "https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF",
+  },
+  {
+    title: "Whatsapp",
+    link: "https://api.whatsapp.com/send/?phone=%2B923222827558&text&type=phone_number&app_absent=0",
+    darkicon:
+      "https://img.icons8.com/?size=100&id=16733&format=png&color=000000",
+    lightIcon:
+      "https://img.icons8.com/?size=100&id=16733&format=png&color=FFFFFF",
+  },
+  {
+    title: "Email",
+    link: "https://mail.google.com/mail/u/0/?fs=1&to=talhahasif995@gmail.com&tf=cm",
+    darkicon:
+      "https://img.icons8.com/?size=100&id=YRRhCXfA0Vd0&format=png&color=000000",
+    lightIcon:
+      "https://img.icons8.com/?size=100&id=YRRhCXfA0Vd0&format=png&color=FFFFFF",
+  },
+];
+
+const Contact = () => {
+  const { darkmode } = useContext(DarkmodeContext);
+
+  return (
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="text-4xl font-extrabold text-start dark:text-yellow-400">
+        Let’s connect and discuss how I can contribute to your goals
+      </h1>
+      <div className="flex gap-28 justify-center items-center py-12">
+        <div className="w-[30%] flex flex-col gap-5 text-start">
+          <h2 className="text-3xl font-bold">Talha Asif</h2>
+          <h2 className="text-sm">
+            Your Partner in Building a Strong Online Presence
+          </h2>
+        </div>
+        <div className="w-[70%]">
+          <div className="grid grid-cols-2 gap-5">
+            {sociallink.map((data, index) => {
+              return (
+                <a
+                  href={data.link}
+                  key={index}
+                  className="flex items-center justify-between w-[180px]"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      width="32"
+                      height="32"
+                      src={darkmode == false ? data.darkicon : data.lightIcon}
+                      alt="github"
+                    />
+                    <p>{data.title}</p>
+                  </div>
+                  <ArrowForwardIcon fontSize="md" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;

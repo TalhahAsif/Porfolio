@@ -10,6 +10,7 @@ import Skills from "./Component/Skills/Skills";
 import { DarkmodeContext } from "./Contextss/Theme";
 import UseDaily from "./Component/UseDaily/UseDaily";
 import Projects from "./Component/Projects/Projects";
+import Contact from "./Component/Contact/Contact";
 
 function App() {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
@@ -18,7 +19,7 @@ function App() {
     <div className={darkmode == false ? "" : "dark"}>
       <section className="dark:bg-bg_rich_Black bg-bg_cream">
         <div
-          className="sm:max-w-[60%] m-auto text-center p-5 duration-1000"
+          className="sm:max-w-[60%] m-auto text-center p-5"
           id="Home"
         >
           <Navbar />
@@ -59,7 +60,10 @@ function App() {
 
           <section id="Projects" className="my-24 dark:text-text_silver">
             <Projects />
+          </section>
 
+          <section id="Contect" className="my-24 dark:text-text_silver">
+            <Contact />
           </section>
         </div>
       </section>
