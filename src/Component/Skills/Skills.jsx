@@ -51,18 +51,18 @@ const Skills = () => {
           <p className="text-3xl font-bold text-left">Skills</p>
           <DownloadCV />
         </div>
-        <div className="mt-10 px-20 gap-10 grid md:grid-cols-1 lg:grid-cols-2 m-auto">
+        <div className="mt-10 gap-10 grid md:grid-cols-1 lg:grid-cols-2 m-auto">
           {techStack.map((data, index) => {
             return (
-              <div className="p-8 border-b flex flex-col gap-5">
+              <div className="p-8 border-b flex flex-col gap-5 " key={index}>
                 <div className="flex items-center gap-5">
-                  <img src={data.logo} alt="" className="w-14" />
-                  <p className="dark:text-text_silver text-2xl font-bold">
+                  <img src={data.logo} alt="" className="w-7" />
+                  <p className="dark:text-text_silver text-xl font-bold">
                     {data.title}
                   </p>
                 </div>
                 <div className="w-[80%] m-auto">
-                  <p className="text-md text-left">{data.intro}</p>
+                  <p className="text-sm text-left">{data.intro}</p>
                 </div>
               </div>
             );
