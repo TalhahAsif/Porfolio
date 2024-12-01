@@ -1,7 +1,7 @@
 import React from "react";
 import VScode from  "../../assets/tech-Icons/VSCode.png"
 import Chatgpt from  "../../assets/tech-Icons/chatgpt.png"
-import git from  "../../assets/tech-Icons/git.png"
+import git from  "../../assets/tech-Icons/Git.png"
 import Github from  "../../assets/tech-Icons/GitHub.png"
 import Postman from  "../../assets/tech-Icons/Postman.png"
 
