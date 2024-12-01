@@ -5,6 +5,7 @@ import git from  "../../assets/tech-Icons/git.png"
 import Github from  "../../assets/tech-Icons/GitHub.png"
 import Postman from  "../../assets/tech-Icons/Postman.png"
 
+
 const UseDaily = () => {
   const techStack = [
     {
