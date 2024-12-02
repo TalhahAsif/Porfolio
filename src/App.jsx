@@ -21,7 +21,7 @@ function App() {
         <div className="sm:max-w-[60%] m-auto text-center p-5" id="Home">
           <Navbar />
           <section className="animate__animated animate__fadeIn animate__slow">
-            <div className="my-20 mx-20">
+            <div className="my-20 lg:mx-20">
               <img
                 src={Banner}
                 alt=""
@@ -29,7 +29,7 @@ function App() {
               />
             </div>
             <section className="flex justify-center items-center flex-col">
-              <div className="dark:text-text_silver text-md text-left mx-20">
+              <div className="dark:text-text_silver text-md text-left md:mx-20">
                 Hi there! I'm Talha Asif 👋 , a passionate MERN Stack Developer
                 with a strong focus on React. I love creating efficient,
                 scalable, and user-friendly web applications. Let's build
