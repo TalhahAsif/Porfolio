@@ -43,38 +43,38 @@ const Contact = () => {
 
   return (
     <div className="flex flex-col justify-center items-center sm:max-w-[60%] gap-10 m-auto">
-      <h1 className="text-4xl font-extrabold text-start text-yellow-400">
+      <h1 className="text-4xl font-extrabold text-center md:text-start text-yellow-400">
         Let’s connect and discuss how I can contribute to your goals
       </h1>
-      <div className="flex gap-28 justify-center items-center">
-        <div className="w-[30%] flex flex-col gap-5 text-start">
+      <div className="flex gap-20 flex-wrap justify-center items-center">
+        <div className="lg:w-[30%] sm:w-full flex flex-col gap-5 text-center md:text-start">
           <h2 className="text-3xl font-bold">Talha Asif</h2>
           <h2 className="text-sm">
             Your Partner in Building a Strong Online Presence
           </h2>
         </div>
-        <div className="w-[70%]">
-          <div className="grid grid-cols-2 gap-5">
-            {sociallink.map((data, index) => {
-              return (
-                <a
-                  href={data.link}
-                  key={index}
-                  className="flex items-center justify-between w-[180px]"
-                >
-                  <div className="flex items-center gap-3">
-                    <img
-                      width="32"
-                      height="32"
-                      src={data.lightIcon}
-                      alt="github"
-                    />
-                    <p>{data.title}</p>
-                  </div>
-                  <ArrowForwardIcon fontSize="md" />
-                </a>
-              );
-            })}
+        <div className="w-[60%]">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5">
+            {sociallink.map((data, index) => (
+              <a
+                target="#"
+                href={data.link}
+                key={index}
+                className="group flex items-center justify-between w-[180px] hover:w-[220px] hover:text-2xl duration-400"
+              >
+                <div className="flex items-center gap-3">
+                  <img
+                    width="32"
+                    height="32"
+                    src={data.lightIcon}
+                    alt={data.title}
+                    className="animate__animated animate__pulse animate__infinite animate__slow group-hover:w-[40px] duration-400"
+                  />
+                  <p>{data.title}</p>
+                </div>
+                <ArrowForwardIcon fontSize="small" />
+              </a>
+            ))}
           </div>
         </div>
       </div>

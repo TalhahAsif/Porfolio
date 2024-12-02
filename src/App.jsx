@@ -20,7 +20,7 @@ function App() {
       <section className="dark:bg-bg_rich_Black ">
         <div className="sm:max-w-[60%] m-auto text-center p-5" id="Home">
           <Navbar />
-          <section>
+          <section className="animate__animated animate__fadeIn animate__slow">
             <div className="my-20 mx-20">
               <img
                 src={Banner}
@@ -40,27 +40,27 @@ function App() {
 
           {/* Services */}
 
-          <div id="Service" className="dark:text-text_silver text-left mt-20 ">
-            <p className="font-bold text-2xl">Services we offer</p>
+          <div id="Service" className="dark:text-text_silver text-left mt-20  animate__animated animate__fadeIn animate__slow">
+            <p className="font-bold text-2xl">What I can do</p>
             <ServicesScroll />
           </div>
 
           {/* //SKILLS */}
 
-          <section id="Skill" className="my-24 dark:text-text_silver ">
+          <section id="Skill" className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow ">
             <Skills />
           </section>
 
-          <section className="my-24 dark:text-text_silver">
+          <section className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow">
             <UseDaily />
           </section>
 
-          <section id="Projects" className="my-24 dark:text-text_silver">
+          <section id="Projects" className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow">
             <Projects />
           </section>
         </div>
 
-        <section id="Contect" className="py-10 text-text_silver bg-black dark:bg-slate-900">
+        <section id="Contect" className="py-10 text-text_silver bg-black dark:bg-slate-900  animate__animated animate__fadeIn animate__slow">
           <Contact />
         </section>
       </section>

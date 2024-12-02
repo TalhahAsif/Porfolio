@@ -13,9 +13,11 @@ const Navbar = () => {
   return (
     <>
       <section className="flex items-center justify-between sm:justify-around sticky top-5 z-10">
-        <div className="hidden md:block lg:block text-2xl font-extrabold text-white dark:text-black bg-black dark:bg-white p-1.5 rounded-xl cursor-pointer">
-          <p>TA</p>
-        </div>
+        <a href="#Home">
+          <div className="hidden md:block lg:block text-2xl font-extrabold text-white dark:text-black bg-black dark:bg-white p-1.5 rounded-xl cursor-pointer">
+            <p>TA</p>
+          </div>
+        </a>
 
         <div className="w-full md:w-fit h-12 rounded-full flex justify-center text-sm items-center text-center backdrop-blur-sm bg-black/10 dark:bg-white/30 px-10 sticky top-3">
           {Navs.map((data, index) => {

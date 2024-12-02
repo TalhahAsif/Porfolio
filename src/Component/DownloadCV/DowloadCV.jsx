@@ -2,20 +2,15 @@
 import React from "react";
 
 const DownloadCV = () => {
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = process.env.CV_DOWNLOAD;
-    link.download = "TalhahAsif.pdf";
-    link.click();
-  };
-
   return (
-    <button
-      onClick={handleDownload}
-      className=" bg-slate-800 hover:bg-slate-900 duration-200 text-text_silver font-bold py-2 px-4 rounded-full"
+    <a
+      target="#"
+      href="https://drive.google.com/file/d/1wHJ-v6bDBT9iIFx-Ln27hp9Kg7U9OAfs/view?usp=drive_link"
     >
-      Download CV
-    </button>
+      <button className=" bg-slate-800 hover:bg-slate-900 duration-200 text-text_silver font-bold py-2 px-4 rounded-full">
+        Download CV
+      </button>
+    </a>
   );
 };
 
