@@ -42,11 +42,11 @@ const Contact = () => {
   const { darkmode } = useContext(DarkmodeContext);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h1 className="text-4xl font-extrabold text-start dark:text-yellow-400">
+    <div className="flex flex-col justify-center items-center sm:max-w-[60%] gap-10 m-auto">
+      <h1 className="text-4xl font-extrabold text-start text-yellow-400">
         Let’s connect and discuss how I can contribute to your goals
       </h1>
-      <div className="flex gap-28 justify-center items-center py-12">
+      <div className="flex gap-28 justify-center items-center">
         <div className="w-[30%] flex flex-col gap-5 text-start">
           <h2 className="text-3xl font-bold">Talha Asif</h2>
           <h2 className="text-sm">
@@ -66,7 +66,7 @@ const Contact = () => {
                     <img
                       width="32"
                       height="32"
-                      src={darkmode == false ? data.darkicon : data.lightIcon}
+                      src={data.lightIcon}
                       alt="github"
                     />
                     <p>{data.title}</p>

@@ -130,7 +130,7 @@ const Projects = () => {
               height={200}
               src={selectedProject[0].thumbnail}
               alt="NextUI Album Cover"
-              className="m-5"
+              className="m-5 z-10"
             />
           </div>
         </section>

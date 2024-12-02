@@ -16,12 +16,9 @@ function App() {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
 
   return (
-    <div className={darkmode == false ? "" : "dark"}>
-      <section className="dark:bg-bg_rich_Black bg-bg_cream">
-        <div
-          className="sm:max-w-[60%] m-auto text-center p-5"
-          id="Home"
-        >
+    <div className={darkmode == false ? "" : "dark bg-bg_cream"}>
+      <section className="dark:bg-bg_rich_Black ">
+        <div className="sm:max-w-[60%] m-auto text-center p-5" id="Home">
           <Navbar />
           <section>
             <div className="my-20 mx-20">
@@ -61,11 +58,11 @@ function App() {
           <section id="Projects" className="my-24 dark:text-text_silver">
             <Projects />
           </section>
-
-          <section id="Contect" className="my-24 dark:text-text_silver">
-            <Contact />
-          </section>
         </div>
+
+        <section id="Contect" className="py-10 text-text_silver bg-black dark:bg-slate-900">
+          <Contact />
+        </section>
       </section>
     </div>
   );
