@@ -5,6 +5,8 @@ import tailwind from "../../assets/tech-Icons/Tailwind-CSS.png";
 import JS from "../../assets/tech-Icons/JS.png";
 import Reactjs from "../../assets/tech-Icons/React.png";
 import Next from "../../assets/tech-Icons/Next.js.png";
+import Nodejs from "../../assets/tech-Icons/Node.js.png";
+import Mongodb from "../../assets/tech-Icons/MongoDB.png";
 import DownloadCV from "../DownloadCV/DowloadCV";
 
 const Skills = () => {
@@ -41,6 +43,16 @@ const Skills = () => {
       title: "Next.js",
       intro:
         "React-based framework for server-side rendering and static sites.",
+    },
+    {
+      logo: Nodejs,
+      title: "Node.js",
+      intro: "JavaScript runtime for building scalable network applications.",
+    },
+    {
+      logo: Mongodb,
+      title: "Mongo DB",
+      intro: "a NoSQL database that uses flexible, JSON-like documents to store data.",
     },
   ];
 
