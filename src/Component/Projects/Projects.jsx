@@ -94,7 +94,6 @@ const Projects = () => {
   };
 
   const [selectedProject, setselectedProject] = useState([projects[0]]);
-  console.log(selectedProject);
 
   return (
     <>
@@ -127,12 +126,13 @@ const Projects = () => {
                     {<PublicIcon />}Live
                   </Button>
                 </a>
-                {}
-                <a target="#" href={selectedProject[0].githublink}>
-                  <Button className="bg-green-400 text-black shadow-lg">
-                    {<CodeIcon />} Code
-                  </Button>
-                </a>
+                {selectedProject.githublink && (
+                  <a target="#" href={selectedProject[0].githublink}>
+                    <Button className="bg-green-400 text-black shadow-lg">
+                      {<CodeIcon />} Code
+                    </Button>
+                  </a>
+                )}
               </div>
             </section>
           </div>
