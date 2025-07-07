@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import todoapp from "../../assets/Projects/todo-app.png";
 import Ecommerce from "../../assets/Projects/Ecommerce-app.png";
 import GuessTheNumber from "../../assets/Projects/Number-game.png";
+import acewallScholars from "../../assets/Projects/acewallscholars.png";
 import AppleClone from "../../assets/Projects/Apple-Clone.png";
 import { Button, Chip, Image } from "@nextui-org/react";
 import CodeIcon from "@mui/icons-material/Code";
 import PublicIcon from "@mui/icons-material/Public";
-import { div, p } from "framer-motion/client";
+import { div, p, title } from "framer-motion/client";
 
 const Projects = () => {
   const projecttabs = [
+    {
+      id: 0,
+      title: "Learning Management System",
+    },
     {
       id: 1,
       title: "Todo App",
@@ -22,13 +27,29 @@ const Projects = () => {
       id: 3,
       title: "Number Game",
     },
-    {
-      id: 4,
-      title: "Apple Landing page clone",
-    },
   ];
 
   const projects = [
+    {
+      id: 0,
+      title: "Learning Management System",
+      thumbnail: acewallScholars,
+      techstack: [
+        "React.js",
+        "Express.js",
+        "tailwind CSS",
+        "MongoDB",
+        "Cloudenary",
+      ],
+      specs: [
+        "Role Based Authentication",
+        "Complex Data Structure",
+        "Course Enrollement & Management",
+        "Grading System",
+        "Admin Dashboard",
+      ],
+      liveLink: "https://acewallscholars.vercel.app/",
+    },
     {
       id: 1,
       title: "Todo App",
@@ -62,15 +83,6 @@ const Projects = () => {
       specs: ["Responsive", "Clean UI & UX"],
       liveLink: "https://smit-number-game.netlify.app/",
       githublink: "https://github.com/TalhahAsif/Number-Game",
-    },
-    {
-      id: 4,
-      title: "Apple landing page Clone",
-      thumbnail: AppleClone,
-      techstack: ["React.js", "tailwind CSS"],
-      specs: ["Responsive", "Clean UI & UX"],
-      liveLink: "https://superb-lokum-fb5998.netlify.app/",
-      githublink: "https://github.com/TalhahAsif/Apple-Website-Clone",
     },
   ];
 
@@ -115,6 +127,7 @@ const Projects = () => {
                     {<PublicIcon />}Live
                   </Button>
                 </a>
+                {}
                 <a target="#" href={selectedProject[0].githublink}>
                   <Button className="bg-green-400 text-black shadow-lg">
                     {<CodeIcon />} Code
