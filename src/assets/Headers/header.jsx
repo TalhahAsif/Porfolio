@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
 import LocalCafeRoundedIcon from "@mui/icons-material/LocalCafeRounded";
@@ -6,6 +6,11 @@ import BugReportRoundedIcon from "@mui/icons-material/BugReportRounded";
 import DesignServicesRoundedIcon from "@mui/icons-material/DesignServicesRounded";
 import RocketLaunchRoundedIcon from "@mui/icons-material/RocketLaunchRounded";
 import DownloadCV from "../../Component/DownloadCV/DowloadCV";
+import { useContext, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { useInView } from "motion/react";
+import { DarkmodeContext } from "@/Contextss/Theme";
+import { Button } from "@/components/ui/button";
 
 const traits = [
   { label: "Code", icon: CodeRoundedIcon },
@@ -16,8 +21,22 @@ const traits = [
 ];
 
 const Header = () => {
+  const sectionRef = useRef(null);
+  const { navbarImg, setNavbarImg } = useContext(DarkmodeContext);
+
+  const isInView = useInView(sectionRef, {
+    amount: 0,
+  });
+
+  useEffect(() => {
+    setNavbarImg(!isInView);
+  }, [isInView]);
+
   return (
-    <section className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-16 mt-10 text-left">
+    <section
+      ref={sectionRef}
+      className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-16 mt-10 text-left"
+    >
       <motion.div
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -65,17 +84,22 @@ const Header = () => {
         </div>
 
         <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 mt-2">
-          <DownloadCV />
-          <a
-            href="#Contect"
-            className="group flex items-center gap-1 font-semibold dark:text-white hover:text-yellow-400 duration-200"
-          >
-            Let&apos;s talk
+          <Button variant="ghost" className="group flex items-center gap-1 font-semibold dark:text-white hover:text-yellow-400 duration-200">
+            Start a Project
             <ArrowForwardIcon
               fontSize="small"
               className="group-hover:translate-x-1 duration-200"
             />
-          </a>
+          </Button>
+          <Link to="/about">
+            <Button variant="outline" className="group flex items-center gap-1 font-semibold dark:text-white hover:text-blue-400 duration-200">
+              About Me
+              <ArrowForwardIcon
+                fontSize="small"
+                className="group-hover:translate-x-1 duration-200"
+              />
+            </Button>
+          </Link>
         </div>
       </motion.div>
     </section>

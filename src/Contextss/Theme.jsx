@@ -7,7 +7,9 @@ const DarkmodeProvider = ({ children }) => {
   const [navbarImg, setNavbarImg] = useState(true);
 
   return (
-    <DarkmodeContext.Provider value={{ darkmode, setDarkmode }}>
+    <DarkmodeContext.Provider
+      value={{ darkmode, setDarkmode, navbarImg, setNavbarImg }}
+    >
       {children}
     </DarkmodeContext.Provider>
   );

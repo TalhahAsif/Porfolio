@@ -14,6 +14,7 @@ import Header from "./assets/Headers/header";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./home";
+import Aboutme from "./Component/Aboutme/Aboutme";
 
 function App() {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="about" element={<Aboutme />} />
         </Route>
       </Routes>
     </div>
