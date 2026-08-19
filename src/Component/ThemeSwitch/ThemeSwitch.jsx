@@ -1,5 +1,6 @@
-import { Switch } from "@nextui-org/react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { Switch } from "@/components/ui/switch";
+import { cn } from "@/lib/utils";
 import { DarkmodeContext } from "../../Contextss/Theme";
 
 const MoonIcon = (props) => (
@@ -39,21 +40,11 @@ const SunIcon = (props) => (
 export default function ThemeSwitch({ className }) {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
 
-  console.log("darkmode from context ===>", darkmode);
-
-  const handleThemeChange = () => {
-    setDarkmode(!darkmode);
-  };
-
   return (
-    <Switch
-      defaultSelected
-      size="sm"
-      color="success"
-      startContent={<SunIcon />}
-      endContent={<MoonIcon />}
-      onChange={handleThemeChange}
-      className={className}
-    ></Switch>
+    <div className={cn("flex items-center gap-2", className)}>
+      <SunIcon className="text-yellow-500" />
+      <Switch checked={darkmode} onCheckedChange={setDarkmode} />
+      <MoonIcon className="dark:text-text_silver" />
+    </div>
   );
 }

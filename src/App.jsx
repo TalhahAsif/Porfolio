@@ -3,7 +3,6 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Navbar from "./Component/Navbar/Navbar";
-import { Button, Image } from "@nextui-org/react";
 import Banner from "../src/assets/Banner.png";
 import ServicesScroll from "./Component/ServicesScroll/ServicesScroll";
 import Skills from "./Component/Skills/Skills";
@@ -12,56 +11,20 @@ import UseDaily from "./Component/UseDaily/UseDaily";
 import Projects from "./Component/Projects/Projects";
 import Contact from "./Component/Contact/Contact";
 import Header from "./assets/Headers/header";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./Layout";
+import Home from "./home";
 
 function App() {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
 
   return (
-    <div className={darkmode == false ? "" : "dark bg-bg_cream"}>
-      <section className="dark:bg-bg_rich_Black ">
-        <div className="sm:max-w-[60%] m-auto text-center p-5" id="Home">
-          <Navbar />
-          <Header />
-        </div>
-
-        {/* Services */}
-
-        <div
-          id="Service"
-          className="w-full dark:text-text_silver animate__animated animate__fadeIn animate__slow mt-16"
-        >
-          <ServicesScroll />
-        </div>
-
-        <div className="sm:max-w-[60%] m-auto text-center p-5">
-          {/* //SKILLS */}
-
-          <section
-            id="Skill"
-            className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow "
-          >
-            <Skills />
-          </section>
-
-          <section className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow">
-            <UseDaily />
-          </section>
-
-          <section
-            id="Projects"
-            className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow"
-          >
-            <Projects />
-          </section>
-        </div>
-
-        <section
-          id="Contect"
-          className="py-10 text-text_silver bg-black dark:bg-slate-900  animate__animated animate__fadeIn animate__slow"
-        >
-          <Contact />
-        </section>
-      </section>
+    <div className={darkmode ? "dark" : ""}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

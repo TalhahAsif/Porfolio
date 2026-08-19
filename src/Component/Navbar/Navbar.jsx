@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ThemeSwitchBTN from "../ThemeSwitch/ThemeSwitch";
+import { DarkmodeContext } from "@/Contextss/Theme";
 
 const Navbar = () => {
+  const { darkmode, setDarkmode } = useContext(DarkmodeContext);
   const Navs = [
     { section: "Home", id: "#Home" },
     { section: "Service", id: "#Service" },
@@ -12,7 +14,7 @@ const Navbar = () => {
 
   return (
     <>
-      <section className="flex items-center justify-between sm:justify-around sticky top-5 z-10">
+      <section className="flex items-center justify-between m-auto sm:max-w-[60%] sm:justify-around sticky top-5 z-10 bg-transparent">
         <a href="#Home">
           <div className="hidden md:block lg:block text-2xl font-extrabold text-white dark:text-black bg-black dark:bg-white p-1.5 rounded-xl cursor-pointer">
             <p>TA</p>
@@ -33,7 +35,7 @@ const Navbar = () => {
           })}
         </div>
 
-        <ThemeSwitchBTN className="hidden md:block" />
+        <ThemeSwitchBTN className="hidden md:flex" />
       </section>
     </>
   );
