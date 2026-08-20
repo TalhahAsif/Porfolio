@@ -15,7 +15,7 @@ const Navbar = () => {
     { section: "Skill", id: "#Skill" },
     { section: "Projects", id: "#Projects" },
     { section: "About", path: "/about" },
-    { section: "Contect", id: "#Contect" },
+    { section: "Contect", path: "/contact" },
   ];
 
   return (

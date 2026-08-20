@@ -13,8 +13,9 @@ import Contact from "./Component/Contact/Contact";
 import Header from "./assets/Headers/header";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
-import Home from "./home";
+import Home from "./Pages/home";
 import Aboutme from "./Component/Aboutme/Aboutme";
+import ContactEmailPage from "./Pages/ContactEmailPage";
 
 function App() {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<Aboutme />} />
+          <Route path="contact" element={<ContactEmailPage />} />
         </Route>
       </Routes>
     </div>
