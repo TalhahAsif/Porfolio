@@ -50,10 +50,10 @@ const Skills = () => {
           {techStack.map((data, index) => {
             return (
               <div
-                className="flex items-center gap-4 px-8 py-5 rounded-full border dark:border-gray-700 dark:hover:border-gray-500 hover:border-gray-400 transition-colors"
+                className="group flex items-center gap-4 px-8 py-5 rounded-full border dark:border-gray-700 dark:hover:border-gray-500 hover:border-gray-400 transition-colors"
                 key={index}
               >
-                <img src={data.logo} alt={data.title} className="w-9 h-9 object-contain" />
+                <img src={data.logo} alt={data.title} className="w-9 h-9 object-contain group-hover:scale-110 transition-transform" />
                 <p className="dark:text-text_silver text-xl font-bold whitespace-nowrap">
                   {data.title}
                 </p>

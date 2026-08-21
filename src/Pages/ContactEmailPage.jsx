@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { ChevronDown } from "lucide-react";
 import SocialIcons from "../Component/SocialIcons/SocialIcons";
+import { motion } from "framer-motion";
 
 const faqs1 = [
   {
@@ -77,9 +78,7 @@ const FaqCard = ({ faq, isOpen, onToggle }) => (
       className="w-full flex items-center justify-between gap-4 text-left"
       aria-expanded={isOpen}
     >
-      <span className="text-xs font-bold dark:text-white">
-        {faq.question}
-      </span>
+      <span className="text-xs font-bold dark:text-white">{faq.question}</span>
       <ChevronDown
         size={20}
         className={`shrink-0 dark:text-text_silver duration-300 ${
@@ -162,7 +161,12 @@ const ContactEmailPage = () => {
   };
 
   return (
-    <div className="dark:bg-bg_rich_Black min-h-screen">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+      className="dark:bg-bg_rich_Black min-h-screen"
+    >
       <section className="sm:max-w-[60%] m-auto text-center p-5 pt-16">
         <h1 className="text-4xl md:text-5xl font-extrabold dark:text-white">
           Let's talk about your <span className="text-yellow-400">project</span>
@@ -262,10 +266,7 @@ const ContactEmailPage = () => {
                 className="grid items-start sm:grid-cols-1 md:grid-cols-2 gap-5"
               >
                 {[leftColumn, rightColumn].map((column, columnIndex) => (
-                  <div
-                    key={columnIndex}
-                    className="flex flex-col gap-5"
-                  >
+                  <div key={columnIndex} className="flex flex-col gap-5">
                     {column.map((faq) => (
                       <FaqCard
                         key={faq.id}
@@ -286,7 +287,7 @@ const ContactEmailPage = () => {
         <p className="dark:text-text_silver text-sm">Find me on</p>
         <SocialIcons iconClassName="w-6 h-6" />
       </section>
-    </div>
+    </motion.div>
   );
 };
 

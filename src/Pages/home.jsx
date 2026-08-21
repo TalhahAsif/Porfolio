@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "../App.css";
 import ServicesScroll from "../Component/ServicesScroll/ServicesScroll";
 import Skills from "../Component/Skills/Skills";
@@ -10,6 +11,15 @@ import Header from "../assets/Headers/header";
 
 function Home() {
   const { darkmode, setDarkmode } = useContext(DarkmodeContext);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const el = document.getElementById(location.hash.slice(1));
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.pathname, location.hash]);
 
   return (
     <div className={"dark:bg-bg_rich_Black"}>

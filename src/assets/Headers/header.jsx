@@ -1,27 +1,16 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
-import LocalCafeRoundedIcon from "@mui/icons-material/LocalCafeRounded";
-import BugReportRoundedIcon from "@mui/icons-material/BugReportRounded";
-import DesignServicesRoundedIcon from "@mui/icons-material/DesignServicesRounded";
-import RocketLaunchRoundedIcon from "@mui/icons-material/RocketLaunchRounded";
 import DownloadCV from "../../Component/DownloadCV/DowloadCV";
 import { useContext, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useInView } from "motion/react";
 import { DarkmodeContext } from "@/Contextss/Theme";
 import { Button } from "@/components/ui/button";
-
-const traits = [
-  { label: "Code", icon: CodeRoundedIcon },
-  { label: "Design", icon: DesignServicesRoundedIcon },
-  { label: "Debug", icon: BugReportRoundedIcon },
-  { label: "Ship", icon: RocketLaunchRoundedIcon },
-  { label: "Coffee", icon: LocalCafeRoundedIcon },
-];
+import TraitPills from "@/Component/TraitPills/TraitPills";
 
 const Header = () => {
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
   const { navbarImg, setNavbarImg } = useContext(DarkmodeContext);
 
   const isInView = useInView(sectionRef, {
@@ -71,20 +60,10 @@ const Header = () => {
           Full-Stack Developer
         </h2>
 
-        <div className="flex flex-wrap justify-center md:justify-start gap-3">
-          {traits.map(({ label, icon: Icon }) => (
-            <span
-              key={label}
-              className="flex items-center gap-1.5 dark:text-text_silver text-sm font-medium bg-black/5 dark:bg-white/10 px-3 py-1.5 rounded-full"
-            >
-              <Icon fontSize="small" className="text-yellow-400" />
-              {label}
-            </span>
-          ))}
-        </div>
+        <TraitPills />
 
         <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 mt-2">
-          <Button variant="ghost" className="group flex items-center gap-1 font-semibold dark:text-white hover:text-yellow-400 duration-200">
+          <Button variant="ghost" onClick={() => navigate("/contact")} className="group flex items-center gap-1 font-semibold dark:text-white hover:text-yellow-400 duration-200">
             Start a Project
             <ArrowForwardIcon
               fontSize="small"

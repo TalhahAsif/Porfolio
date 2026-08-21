@@ -1,7 +1,7 @@
-import { div } from "framer-motion/client";
 import React, { useContext } from "react";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useNavigate } from "react-router-dom";
 import { DarkmodeContext } from "../../Contextss/Theme";
+import SocialIcons from "../SocialIcons/SocialIcons";
 
 const sociallink = [
   {
@@ -40,42 +40,33 @@ const sociallink = [
 
 const Contact = () => {
   const { darkmode } = useContext(DarkmodeContext);
+  const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col justify-center items-center sm:max-w-[60%] gap-10 m-auto">
-      <h1 className="text-4xl font-extrabold text-center md:text-start text-yellow-400">
+    <div className="flex flex-col justify-center items-center sm:max-w-[60%] gap-14 m-auto">
+      <h1
+        onClick={() => navigate("/contact")}
+        className="text-4xl font-extrabold text-center md:text-start text-yellow-400 hover:text-yellow-300 duration-300 cursor-pointer"
+      >
         Let’s connect and discuss how I can contribute to your goals
       </h1>
-      <div className="flex gap-20 flex-wrap justify-center items-center">
-        <div className="lg:w-[30%] sm:w-full flex flex-col gap-5 text-center md:text-start">
-          <h2 className="text-3xl font-bold">Talha Asif</h2>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-24 w-full">
+        <div className="sm:w-full flex flex-col gap-5 text-center md:text-start">
+          <h2
+            onClick={() => navigate("/about")}
+            className="text-3xl font-bold hover:text-yellow-400 duration-300 cursor-pointer"
+          >
+            Talha Asif
+          </h2>
           <h2 className="text-sm">
             Your Partner in Building a Strong Online Presence
           </h2>
         </div>
-        <div className="w-[60%]">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5">
-            {sociallink.map((data, index) => (
-              <a
-                target="#"
-                href={data.link}
-                key={index}
-                className="group flex items-center justify-between w-[180px] hover:w-[220px] hover:text-2xl duration-400"
-              >
-                <div className="flex items-center gap-3">
-                  <img
-                    width="32"
-                    height="32"
-                    src={data.lightIcon}
-                    alt={data.title}
-                    className="animate__animated animate__pulse animate__infinite animate__slow group-hover:w-[40px] duration-400"
-                  />
-                  <p>{data.title}</p>
-                </div>
-                <ArrowForwardIcon fontSize="small" />
-              </a>
-            ))}
-          </div>
+        <div>
+          <section className="flex flex-col items-center gap-4">
+            <p className="dark:text-text_silver text-sm">Find me on</p>
+            <SocialIcons iconClassName="w-6 h-6" />
+          </section>
         </div>
       </div>
     </div>

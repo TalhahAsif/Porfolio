@@ -65,6 +65,18 @@
   scrollbar-width: none;
 }
 
+@keyframes shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-2px) rotate(-10deg); }
+  40% { transform: translateX(2px) rotate(10deg); }
+  60% { transform: translateX(-2px) rotate(-8deg); }
+  80% { transform: translateX(2px) rotate(8deg); }
+}
+
+@utility animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
 @layer base {
   :root {
     --background: oklch(1 0 0);
