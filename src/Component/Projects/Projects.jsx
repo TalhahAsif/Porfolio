@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import todoapp from "../../assets/Projects/todo-app.png";
 import Ecommerce from "../../assets/Projects/Ecommerce-app.png";
+import realestatecrm from "../../assets/Projects/realestatecrm.png";
 import GuessTheNumber from "../../assets/Projects/Number-game.png";
 import acewallScholars from "../../assets/Projects/acewallscholars.png";
 import AppleClone from "../../assets/Projects/Apple-Clone.png";
@@ -25,37 +26,15 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Todo App",
-      thumbnail: todoapp,
-      techstack: ["React.js", "tailwind CSS"],
-      specs: ["Responsive", "Filters", "Clean UI & UX"],
-      liveLink: "https://anytask-sepia.vercel.app/",
-      githublink: "https://github.com/TalhahAsif/React-Todo-App-SMIT",
+      title: "Real Estate CRM Software",
+      thumbnail: realestatecrm,
+      liveLink: "https://real-estate-crm-software-gray.vercel.app/",
     },
     {
       id: 2,
-      title: "Ecommerce",
-      thumbnail: Ecommerce,
-      techstack: ["HTML", "Tailwind CSS", "Javascript", "Firebase"],
-      specs: [
-        "Responsive",
-        "Category Search",
-        "Clean UI & UX",
-        "Authentication",
-        "Add to Cart",
-        "API Integration",
-      ],
-      liveLink: "https://firebaseemailauth.netlify.app/",
-      githublink: "https://github.com/TalhahAsif/E-Commerce-JS-Firebase",
-    },
-    {
-      id: 3,
       title: "Number Game",
       thumbnail: GuessTheNumber,
-      techstack: ["HTML", "CSS"],
-      specs: ["Responsive", "Clean UI & UX"],
       liveLink: "https://smit-number-game.netlify.app/",
-      githublink: "https://github.com/TalhahAsif/Number-Game",
     },
   ];
 
