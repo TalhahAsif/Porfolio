@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import todoapp from "../../assets/Projects/todo-app.png";
 import Ecommerce from "../../assets/Projects/Ecommerce-app.png";
+import realestatecrm from "../../assets/Projects/realestatecrm.png";
 import GuessTheNumber from "../../assets/Projects/Number-game.png";
 import acewallScholars from "../../assets/Projects/acewallscholars.png";
 import AppleClone from "../../assets/Projects/Apple-Clone.png";
@@ -26,17 +27,14 @@ const Projects = () => {
     {
       id: 1,
       title: "Real Estate CRM Software",
-      thumbnail: GuessTheNumber,
+      thumbnail: realestatecrm,
       liveLink: "https://real-estate-crm-software-gray.vercel.app/",
     },
     {
       id: 2,
       title: "Number Game",
       thumbnail: GuessTheNumber,
-      techstack: ["HTML", "CSS"],
-      specs: ["Responsive", "Clean UI & UX"],
       liveLink: "https://smit-number-game.netlify.app/",
-      githublink: "https://github.com/TalhahAsif/Number-Game",
     },
   ];
 
