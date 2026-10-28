@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import git from "../../assets/tech-Icons/Git.png";
 import Postman from "../../assets/tech-Icons/Postman.png";
 import Antigravity from "../../assets/tech-Icons/Antigravity.svg";
@@ -44,7 +45,7 @@ const UseDaily = () => {
                 className="group flex items-center gap-4 px-8 py-5 rounded-full border dark:border-gray-700 dark:hover:border-gray-500 hover:border-gray-400 transition-colors"
                 key={index}
               >
-                <img src={data.logo} alt={data.title} className="w-9 h-9 object-contain group-hover:scale-110 transition-transform" />
+                <Image src={data.logo} alt={data.title} className="w-9 h-9 object-contain group-hover:scale-110 transition-transform" />
                 <p className="dark:text-text_silver text-xl font-bold whitespace-nowrap">
                   {data.title}
                 </p>

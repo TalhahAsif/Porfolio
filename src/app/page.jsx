@@ -1,26 +1,11 @@
-import { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import "../App.css";
-import ServicesScroll from "../Component/ServicesScroll/ServicesScroll";
-import Skills from "../Component/Skills/Skills";
-import { DarkmodeContext } from "../Contextss/Theme";
-import UseDaily from "../Component/UseDaily/UseDaily";
-import Projects from "../Component/Projects/Projects";
-import Contact from "../Component/Contact/Contact";
-import Header from "../assets/Headers/header";
+import ServicesScroll from "@/Component/ServicesScroll/ServicesScroll";
+import Skills from "@/Component/Skills/Skills";
+import UseDaily from "@/Component/UseDaily/UseDaily";
+import Projects from "@/Component/Projects/Projects";
+import Contact from "@/Component/Contact/Contact";
+import Header from "@/assets/Headers/header";
 
-function Home() {
-  const { darkmode, setDarkmode } = useContext(DarkmodeContext);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (!location.hash) return;
-    const el = document.getElementById(location.hash.slice(1));
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [location.pathname, location.hash]);
-
+export default function Home() {
   return (
     <div className={"dark:bg-bg_rich_Black"}>
       <section className="dark:bg-bg_rich_Black">
@@ -68,5 +53,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

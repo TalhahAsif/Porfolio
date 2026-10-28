@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import todoapp from "../../assets/Projects/todo-app.png";
 import Ecommerce from "../../assets/Projects/Ecommerce-app.png";
 import realestatecrm from "../../assets/Projects/realestatecrm.png";
@@ -15,14 +15,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import CodeIcon from "@mui/icons-material/Code";
-import PublicIcon from "@mui/icons-material/Public";
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const Projects = () => {
-  const navigate = useNavigate();
-
   const projects = [
     {
       id: 1,
@@ -46,10 +42,10 @@ const Projects = () => {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2">
             {projects.map((data, index) => {
               return (
-                <Card className="group relative mx-auto w-full max-w-sm pt-0">
+                <Card key={data.id} className="group relative mx-auto w-full max-w-sm pt-0">
                   <div className="absolute inset-0 z-30 aspect-video bg-black/35 transition-opacity duration-300 group-hover:opacity-0" />
 
-                  <img
+                  <Image
                     src={data.thumbnail}
                     alt={data.title}
                     className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale transition-all duration-500 group-hover:brightness-100 group-hover:grayscale-0"
@@ -66,9 +62,11 @@ const Projects = () => {
                   <CardFooter className="flex items-center justify-between">
                     <Button className="w-30">View Details</Button>
 
-                    <Button className="w-10">
-                      <ExternalLink />
-                    </Button>
+                    <a href={data.liveLink} target="#">
+                      <Button className="w-10">
+                        <ExternalLink />
+                      </Button>
+                    </a>
                   </CardFooter>
                 </Card>
               );

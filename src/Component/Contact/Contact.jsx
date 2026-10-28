@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { DarkmodeContext } from "../../Contextss/Theme";
+"use client";
+
+import React from "react";
+import { useRouter } from "next/navigation";
 import SocialIcons from "../SocialIcons/SocialIcons";
 
 const sociallink = [
@@ -39,13 +40,12 @@ const sociallink = [
 ];
 
 const Contact = () => {
-  const { darkmode } = useContext(DarkmodeContext);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className="flex flex-col justify-center items-center sm:max-w-[60%] gap-14 m-auto">
       <h1
-        onClick={() => navigate("/contact")}
+        onClick={() => router.push("/contact")}
         className="text-4xl font-extrabold text-center md:text-start text-yellow-400 hover:text-yellow-300 duration-300 cursor-pointer"
       >
         Let’s connect and discuss how I can contribute to your goals
@@ -53,7 +53,7 @@ const Contact = () => {
       <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-24 w-full">
         <div className="sm:w-full flex flex-col gap-5 text-center md:text-start">
           <h2
-            onClick={() => navigate("/about")}
+            onClick={() => router.push("/about")}
             className="text-3xl font-bold hover:text-yellow-400 duration-300 cursor-pointer"
           >
             Talha Asif

@@ -1,4 +1,6 @@
-import React, { createContext, useState, useContext } from "react";
+"use client";
+
+import React, { createContext, useState } from "react";
 
 const DarkmodeContext = createContext();
 

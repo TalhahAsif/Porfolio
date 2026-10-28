@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import MailRoundedIcon from "@mui/icons-material/MailRounded";
 import WorkRoundedIcon from "@mui/icons-material/WorkRounded";
@@ -64,9 +67,12 @@ const Aboutme = () => {
         <div className="relative -mt-16 md:-mt-20 flex flex-col md:flex-row md:items-end gap-5 md:gap-8">
           <div className="relative shrink-0 mx-auto md:mx-6">
             <div className="absolute inset-0 rounded-full bg-yellow-400/30 blur-2xl scale-110" />
-            <img
+            <Image
               src={profileImg}
               alt="Talha Asif"
+              width={176}
+              height={176}
+              priority
               className="relative w-32 h-32 md:w-44 md:h-44 rounded-full object-cover ring-4 ring-white dark:ring-bg_rich_Black shadow-2xl"
             />
             <span className="absolute bottom-2 right-2 flex items-center gap-1.5 bg-black/80 dark:bg-white text-white dark:text-black text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
@@ -85,7 +91,7 @@ const Aboutme = () => {
               </p>
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-3">
-              <a href="/#Contect">
+              <Link href="/#Contect">
                 <Button
                   variant="outline"
                   className="group flex items-center gap-1 font-semibold dark:text-white hover:text-yellow-400 duration-200"
@@ -96,7 +102,7 @@ const Aboutme = () => {
                     className="group-hover:translate-x-1 duration-200"
                   />
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

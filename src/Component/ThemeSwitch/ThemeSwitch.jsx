@@ -1,3 +1,5 @@
+"use client";
+
 import { useContext } from "react";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";

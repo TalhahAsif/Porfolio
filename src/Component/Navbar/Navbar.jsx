@@ -1,5 +1,8 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+"use client";
+
+import React, { useContext } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import ThemeSwitchBTN from "../ThemeSwitch/ThemeSwitch";
 import { DarkmodeContext } from "@/Contextss/Theme";
 
@@ -19,15 +22,17 @@ const Navbar = () => {
   return (
     <>
       <section className="flex items-center justify-between m-auto sm:max-w-[60%] sm:justify-around sticky top-5 z-10 bg-transparent">
-        <Link to="/#Home">
+        <Link href="/#Home">
           {!navbarImg ? (
             <div className="hidden md:block lg:block text-2xl font-extrabold text-white dark:text-black bg-black dark:bg-white p-1.5 rounded-xl cursor-pointer">
               <p>TA</p>
             </div>
           ) : (
-            <img
+            <Image
               src="https://res.cloudinary.com/pvcq6rie/image/upload/v1787094437/copy_of_gemini_generated_image_ldaaqmldaaqmldaa.jpg"
               alt="Talha Asif"
+              width={56}
+              height={56}
               className="hidden w-14 md:block lg:block p-1.5 rounded-2xl cursor-pointer transition-all duration-500 hover:scale-110 hover:rotate-12"
             />
           )}
@@ -37,7 +42,7 @@ const Navbar = () => {
           {Navs.map((data, index) => {
             return (
               <Link
-                to={data.path ? data.path : `/${data.id}`}
+                href={data.path ? data.path : `/${data.id}`}
                 key={index}
                 className="rounded-full dark:text-white hover:bg-yellow-400 hover:text-black cursor-pointer duration-500 "
               >
