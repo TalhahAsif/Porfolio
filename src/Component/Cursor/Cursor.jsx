@@ -79,14 +79,14 @@ const Cursor = () => {
       {/* trailing ring */}
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-9998 h-10 w-10 rounded-full border-2 border-yellow-400"
+        className="pointer-events-none fixed top-0 left-0 z-9998 h-10 w-10 rounded-full border-2 border-blue-500"
         style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
         animate={{
           opacity: visible ? 1 : 0,
           scale: pressed ? 0.7 : hovering ? 1.6 : 1,
           backgroundColor: hovering
-            ? "rgba(250, 204, 21, 0.2)"
-            : "rgba(250, 204, 21, 0)",
+            ? "rgba(59, 130, 246, 0.2)"
+            : "rgba(59, 130, 246, 0)",
         }}
         transition={{ duration: 0.2 }}
       />

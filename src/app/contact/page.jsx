@@ -85,7 +85,7 @@ const FaqCard = ({ faq, isOpen, onToggle }) => (
       <ChevronDown
         size={20}
         className={`shrink-0 dark:text-text_silver duration-300 ${
-          isOpen ? "rotate-180 text-yellow-400" : ""
+          isOpen ? "rotate-180 text-blue-500" : ""
         }`}
       />
     </button>
@@ -172,7 +172,7 @@ const ContactEmailPage = () => {
     >
       <Reveal as="section" className="sm:max-w-[60%] m-auto text-center p-5 pt-16">
         <h1 className="text-4xl md:text-5xl font-extrabold dark:text-white">
-          Let's talk about your <span className="text-yellow-400">project</span>
+          Let's talk about your <span className="text-blue-500">project</span>
         </h1>
         <p className="mt-4 dark:text-text_silver max-w-2xl mx-auto">
           Fill out the form below and I'll get back to you as soon as possible.
@@ -197,7 +197,7 @@ const ContactEmailPage = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="Your name"
-              className="rounded-lg border dark:border-gray-700 bg-transparent px-4 py-2.5 dark:text-white outline-none focus:border-yellow-400 duration-200"
+              className="rounded-lg border dark:border-gray-700 bg-transparent px-4 py-2.5 dark:text-white outline-none focus:border-blue-500 duration-200"
             />
           </div>
 
@@ -215,7 +215,7 @@ const ContactEmailPage = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="you@example.com"
-              className="rounded-lg border dark:border-gray-700 bg-transparent px-4 py-2.5 dark:text-white outline-none focus:border-yellow-400 duration-200"
+              className="rounded-lg border dark:border-gray-700 bg-transparent px-4 py-2.5 dark:text-white outline-none focus:border-blue-500 duration-200"
             />
           </div>
 
@@ -233,14 +233,14 @@ const ContactEmailPage = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="Tell me about your project..."
-              className="rounded-lg border dark:border-gray-700 bg-transparent px-4 py-2.5 dark:text-white outline-none focus:border-yellow-400 duration-200 resize-none"
+              className="rounded-lg border dark:border-gray-700 bg-transparent px-4 py-2.5 dark:text-white outline-none focus:border-blue-500 duration-200 resize-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={status === "sending"}
-            className="rounded-full bg-yellow-400 text-black font-bold py-3 hover:bg-yellow-300 duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="rounded-full bg-blue-500 text-white font-bold py-3 hover:bg-blue-400 duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === "sending" ? "Sending..." : "Send Message"}
           </button>
@@ -260,29 +260,25 @@ const ContactEmailPage = () => {
         <h2 className="text-3xl md:text-4xl font-extrabold text-center dark:text-white mb-10">
           Frequently Asked Questions
         </h2>
-        <div className="flex flex-col gap-5">
-          {[faqs1, faqs2].map((block, blockIndex) => {
-            const [leftColumn, rightColumn] = splitIntoColumns(block);
-            return (
-              <div
-                key={blockIndex}
-                className="grid items-start sm:grid-cols-1 md:grid-cols-2 gap-5"
-              >
-                {[leftColumn, rightColumn].map((column, columnIndex) => (
-                  <div key={columnIndex} className="flex flex-col gap-5">
-                    {column.map((faq) => (
-                      <FaqCard
-                        key={faq.id}
-                        faq={faq}
-                        isOpen={openFaq === faq.id}
-                        onToggle={() => toggleFaq(faq.id)}
-                      />
-                    ))}
-                  </div>
-                ))}
-              </div>
-            );
-          })}
+        {/* Independent columns on md+ so an open card only pushes down its own column;
+            on mobile the columns are `contents` and `order` restores 1..8 sequence. */}
+        <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:items-start">
+          {splitIntoColumns([...faqs1, ...faqs2]).map((column, columnIndex) => (
+            <div
+              key={columnIndex}
+              className="contents md:flex md:flex-col md:gap-5"
+            >
+              {column.map((faq) => (
+                <div key={faq.id} style={{ order: faq.id }}>
+                  <FaqCard
+                    faq={faq}
+                    isOpen={openFaq === faq.id}
+                    onToggle={() => toggleFaq(faq.id)}
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </Reveal>
 

@@ -38,7 +38,7 @@ const SocialIcons = ({ className = "", iconClassName = "w-5 h-5" }) => (
         rel="noreferrer"
         aria-label={title}
         title={title}
-        className="dark:text-text_silver text-gray-700 hover:text-yellow-400 dark:hover:text-yellow-400 duration-300 hover:-translate-y-1 inline-flex"
+        className="dark:text-text_silver text-gray-700 hover:text-blue-500 dark:hover:text-blue-500 duration-300 hover:-translate-y-1 inline-flex"
       >
         <Icon className={iconClassName} />
       </a>

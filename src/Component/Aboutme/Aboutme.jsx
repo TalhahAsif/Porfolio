@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import SocialIcons from "../SocialIcons/SocialIcons";
 import TraitPills from "../TraitPills/TraitPills";
 import Reveal from "@/Component/Reveal/Reveal";
+import DottedBackground from "@/Component/DottedBackground/DottedBackground";
 import { motion } from "framer-motion";
 
 const profileImg =
@@ -45,72 +46,67 @@ const Aboutme = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-      className="dark:bg-bg_rich_Black min-h-screen pb-24"
+      className="dark:bg-bg_rich_Black pb-24"
     >
-      {/* Cover photo */}
-      <Reveal className="sm:max-w-[70%] m-auto px-5 mt-10">
-        <div className="relative h-48 sm:h-64 md:h-80 rounded-3xl overflow-hidden bg-gradient-to-br from-[#0E0F19] via-[#151830] to-[#0E0F19] border dark:border-gray-800">
-          <div
-            className="absolute inset-0 opacity-60"
-            style={{
-              backgroundImage:
-                "radial-gradient(rgba(250,204,21,0.35) 1px, transparent 1px)",
-              backgroundSize: "22px 22px",
-            }}
-          />
-          <div className="absolute -top-16 -left-16 w-72 h-72 bg-yellow-400/25 blur-3xl rounded-full" />
-          <div className="absolute -bottom-24 -right-10 w-80 h-80 bg-yellow-400/10 blur-3xl rounded-full" />
-        </div>
-      </Reveal>
+      {/* Fullscreen dotted hero: dots fade out towards the bottom */}
+      <section className="relative -mt-14 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-5 pt-20 pb-10 text-center">
+        <DottedBackground />
 
-      {/* Profile row, overlapping the cover like a Facebook profile */}
-      <Reveal delay={0.1} className="sm:max-w-[70%] m-auto px-5">
-        <div className="relative -mt-16 md:-mt-20 flex flex-col md:flex-row md:items-end gap-5 md:gap-8">
-          <div className="relative shrink-0 mx-auto md:mx-6">
-            <div className="absolute inset-0 rounded-full bg-yellow-400/30 blur-2xl scale-110" />
-            <Image
-              src={profileImg}
-              alt="Talha Asif"
-              width={176}
-              height={176}
-              priority
-              className="relative w-32 h-32 md:w-44 md:h-44 rounded-full object-cover ring-4 ring-white dark:ring-bg_rich_Black shadow-2xl"
-            />
-            <span className="absolute bottom-2 right-2 flex items-center gap-1.5 bg-black/80 dark:bg-white text-white dark:text-black text-xs font-semibold px-3 py-1 rounded-full shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              Available
-            </span>
-          </div>
+        <div className="relative z-10 flex flex-col items-center gap-[clamp(0.75rem,2.5vh,1.75rem)]">
+          <Reveal>
+            <h2 className="text-[clamp(3.25rem,min(13vw,14vh),11rem)] font-extrabold uppercase leading-none tracking-tighter text-black dark:text-white">
+              About Me
+            </h2>
+          </Reveal>
 
-          <div className="flex-1 flex flex-col md:flex-row md:items-end md:justify-between gap-4 pb-2 text-center md:text-left">
-            <div>
-              <h1 className="text-3xl md:text-4xl font-extrabold dark:text-white">
-                Talha Asif
-              </h1>
-              <p className="text-yellow-400 font-semibold mt-1">
-                Full-Stack Developer
-              </p>
+          <div className="mt-[clamp(1.5rem,8vh,6rem)] flex flex-col items-center gap-[clamp(1rem,3vh,2rem)] sm:flex-row sm:gap-10 md:gap-14">
+          <Reveal delay={0.1}>
+            <div className="relative mx-auto">
+              <div className="absolute inset-0 scale-110 rounded-full bg-blue-500/30 blur-2xl" />
+              <Image
+                src={profileImg}
+                alt="Talha Asif"
+                width={320}
+                height={320}
+                priority
+                className="relative h-[clamp(9rem,36vh,22rem)] w-[clamp(9rem,36vh,22rem)] rounded-full object-cover shadow-2xl ring-4 ring-white dark:ring-bg_rich_Black"
+              />
+              <span className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-black/80 px-3 py-1 text-xs font-semibold text-white shadow-lg dark:bg-white dark:text-black">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
+                Available
+              </span>
             </div>
-            <div className="flex flex-wrap justify-center md:justify-end gap-3">
-              <Link href="/#Contect">
-                <Button
-                  variant="outline"
-                  className="group flex items-center gap-1 font-semibold dark:text-white hover:text-yellow-400 duration-200"
-                >
-                  Let&apos;s Talk
-                  <ArrowForwardIcon
-                    fontSize="small"
-                    className="group-hover:translate-x-1 duration-200"
-                  />
-                </Button>
-              </Link>
-            </div>
+          </Reveal>
+
+          <Reveal
+            delay={0.2}
+            className="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left"
+          >
+            <h1 className="text-[clamp(2.25rem,min(7vw,9.5vh),6.5rem)] font-extrabold leading-tight dark:text-white">
+              Talha Asif
+            </h1>
+            <p className="text-[clamp(1rem,2.4vh,1.5rem)] font-semibold text-blue-500">
+              Full-Stack Developer
+            </p>
+            <Link href="/contact" className="mt-2">
+              <Button
+                variant="outline"
+                className="group flex items-center gap-1 font-semibold dark:text-white hover:text-blue-500 duration-200"
+              >
+                Let&apos;s Talk
+                <ArrowForwardIcon
+                  fontSize="small"
+                  className="group-hover:translate-x-1 duration-200"
+                />
+              </Button>
+            </Link>
+          </Reveal>
           </div>
         </div>
-      </Reveal>
+      </section>
 
-      {/* Bio + quick facts */}
-      <div className="sm:max-w-[70%] m-auto px-5 mt-14 grid md:grid-cols-3 gap-10">
+      {/* Bio + quick facts: one full screen */}
+      <div className="sm:max-w-[70%] m-auto px-5 min-h-screen items-center grid md:grid-cols-3 gap-10">
         <Reveal className="md:col-span-2 flex flex-col gap-4 text-center md:text-left">
           <h2 className="text-2xl font-bold dark:text-white">About Me</h2>
           <p className="dark:text-text_silver leading-relaxed">
@@ -141,7 +137,7 @@ const Aboutme = () => {
                 key={label}
                 className="flex items-center gap-3 dark:text-text_silver text-xs"
               >
-                <Icon fontSize="small" className="text-yellow-400 shrink-0" />
+                <Icon fontSize="small" className="text-blue-500 shrink-0" />
                 {label}
               </div>
             ))}

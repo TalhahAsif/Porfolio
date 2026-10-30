@@ -5,14 +5,24 @@ import Projects from "@/Component/Projects/Projects";
 import Contact from "@/Component/Contact/Contact";
 import Header from "@/assets/Headers/header";
 import Reveal from "@/Component/Reveal/Reveal";
+import DottedBackground from "@/Component/DottedBackground/DottedBackground";
 
 export default function Home() {
   return (
     <div className={"dark:bg-bg_rich_Black"}>
       <section className="dark:bg-bg_rich_Black">
-        <div className="sm:max-w-[60%] m-auto text-center p-5" id="Home">
-          <Header />
+        {/* Fullscreen dotted hero, extends behind the navbar */}
+        <div
+          id="Home"
+          className="relative -mt-14 flex min-h-screen items-center justify-center overflow-hidden pt-14"
+        >
+          <DottedBackground />
+          <div className="relative z-10 w-full sm:max-w-[60%] m-auto text-center p-5">
+            <Header />
+          </div>
+        </div>
 
+        <div className="sm:max-w-[60%] m-auto text-center p-5">
           <Reveal
             as="section"
             id="Projects"

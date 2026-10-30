@@ -46,7 +46,7 @@ const Contact = () => {
     <div className="flex flex-col justify-center items-center sm:max-w-[60%] gap-14 m-auto">
       <h1
         onClick={() => router.push("/contact")}
-        className="text-4xl font-extrabold text-center md:text-start text-yellow-400 hover:text-yellow-300 duration-300 cursor-pointer"
+        className="text-4xl font-extrabold text-center md:text-start text-blue-500 hover:text-blue-400 duration-300 cursor-pointer"
       >
         Let’s connect and discuss how I can contribute to your goals
       </h1>
@@ -54,7 +54,7 @@ const Contact = () => {
         <div className="sm:w-full flex flex-col gap-5 text-center md:text-start">
           <h2
             onClick={() => router.push("/about")}
-            className="text-3xl font-bold hover:text-yellow-400 duration-300 cursor-pointer"
+            className="text-3xl font-bold hover:text-blue-500 duration-300 cursor-pointer"
           >
             Talha Asif
           </h2>
