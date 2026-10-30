@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { ChevronDown } from "lucide-react";
 import SocialIcons from "@/Component/SocialIcons/SocialIcons";
+import Reveal from "@/Component/Reveal/Reveal";
 import { motion } from "framer-motion";
 
 const faqs1 = [
@@ -169,16 +170,16 @@ const ContactEmailPage = () => {
       transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
       className="dark:bg-bg_rich_Black min-h-screen"
     >
-      <section className="sm:max-w-[60%] m-auto text-center p-5 pt-16">
+      <Reveal as="section" className="sm:max-w-[60%] m-auto text-center p-5 pt-16">
         <h1 className="text-4xl md:text-5xl font-extrabold dark:text-white">
           Let's talk about your <span className="text-yellow-400">project</span>
         </h1>
         <p className="mt-4 dark:text-text_silver max-w-2xl mx-auto">
           Fill out the form below and I'll get back to you as soon as possible.
         </p>
-      </section>
+      </Reveal>
 
-      <section className="sm:max-w-[50%] m-auto p-5 mt-10">
+      <Reveal as="section" delay={0.1} className="sm:max-w-[50%] m-auto p-5 mt-10">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-5 rounded-2xl border dark:border-gray-800 p-8 dark:bg-white/5"
@@ -253,9 +254,9 @@ const ContactEmailPage = () => {
             <p className="text-sm text-red-400 text-center">{errorMsg}</p>
           )}
         </form>
-      </section>
+      </Reveal>
 
-      <section className="sm:max-w-[70%] m-auto p-5 mt-24">
+      <Reveal as="section" className="sm:max-w-[70%] m-auto p-5 mt-24">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center dark:text-white mb-10">
           Frequently Asked Questions
         </h2>
@@ -283,12 +284,12 @@ const ContactEmailPage = () => {
             );
           })}
         </div>
-      </section>
+      </Reveal>
 
-      <section className="py-16 flex flex-col items-center gap-4">
+      <Reveal as="section" className="py-16 flex flex-col items-center gap-4">
         <p className="dark:text-text_silver text-sm">Find me on</p>
         <SocialIcons iconClassName="w-6 h-6" />
-      </section>
+      </Reveal>
     </motion.div>
   );
 };

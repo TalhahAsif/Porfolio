@@ -57,6 +57,16 @@
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbars site-wide (the page still scrolls) */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -155,4 +165,9 @@
   html {
     @apply font-sans;
   }
+}
+/* Custom cursor: only applied once <Cursor /> has mounted on a fine pointer */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
 }

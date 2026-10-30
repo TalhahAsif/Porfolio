@@ -1,30 +1,73 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import ThemeSwitchBTN from "../ThemeSwitch/ThemeSwitch";
+import SocialIcons from "../SocialIcons/SocialIcons";
 import { DarkmodeContext } from "@/Contextss/Theme";
 
-const Navbar = () => {
-  const { darkmode, setDarkmode } = useContext(DarkmodeContext);
-  const { navbarImg, setNavbarImg } = useContext(DarkmodeContext);
+const Navs = [
+  { section: "Home", id: "#Home" },
+  { section: "Service", id: "#Service" },
+  { section: "Stack", id: "#Skill" },
+  { section: "Work", id: "#Projects" },
+  { section: "About", path: "/about" },
+  { section: "Contact", path: "/contact" },
+];
 
-  const Navs = [
-    { section: "Home", id: "#Home" },
-    { section: "Service", id: "#Service" },
-    { section: "Stack", id: "#Skill" },
-    { section: "Work", id: "#Projects" },
-    { section: "About", path: "/about" },
-    { section: "Contact", path: "/contact" },
-  ];
+const EASE = [0.76, 0, 0.24, 1];
+
+const panel = {
+  hidden: { x: "100%" },
+  show: { x: 0, transition: { duration: 0.7, ease: EASE } },
+  exit: { x: "100%", transition: { duration: 0.6, ease: EASE, delay: 0.15 } },
+};
+
+const list = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.4 } },
+  exit: { transition: { staggerChildren: 0.04, staggerDirection: -1 } },
+};
+
+const rise = {
+  hidden: { y: "110%" },
+  show: { y: 0, transition: { duration: 0.7, ease: EASE } },
+  exit: { y: "110%", transition: { duration: 0.35, ease: EASE } },
+};
+
+const fade = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.9 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
+};
+
+const Navbar = () => {
+  const { navbarImg } = useContext(DarkmodeContext);
+  const [open, setOpen] = useState(false);
+
+  // Lock page scroll and allow Esc to close while the menu is open.
+  useEffect(() => {
+    if (!open) return;
+
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   return (
     <>
-      <section className="flex items-center justify-between m-auto sm:max-w-[60%] sm:justify-around sticky top-5 z-10 bg-transparent">
-        <Link href="/#Home">
+      <section className="flex items-center justify-between m-auto px-5 sm:max-w-[60%] sticky top-5 z-[65] bg-transparent">
+        <Link href="/#Home" aria-label="Home">
           {!navbarImg ? (
-            <div className="hidden md:block lg:block text-2xl font-extrabold text-white dark:text-black bg-black dark:bg-white p-1.5 rounded-xl cursor-pointer">
+            <div className="text-2xl font-extrabold text-white dark:text-black bg-black dark:bg-white p-1.5 rounded-xl cursor-pointer">
               <p>TA</p>
             </div>
           ) : (
@@ -33,27 +76,88 @@ const Navbar = () => {
               alt="Talha Asif"
               width={56}
               height={56}
-              className="hidden w-14 md:block lg:block p-1.5 rounded-2xl cursor-pointer transition-all duration-500 hover:scale-110 hover:rotate-12"
+              className="w-14 p-1.5 rounded-2xl cursor-pointer transition-all duration-500 hover:scale-110 hover:rotate-12"
             />
           )}
         </Link>
 
-        <div className="w-full md:w-fit h-12 rounded-full flex justify-center text-sm items-center text-center backdrop-blur-sm bg-black/10 dark:bg-white/30 px-10 sticky top-3">
-          {Navs.map((data, index) => {
-            return (
-              <Link
-                href={data.path ? data.path : `/${data.id}`}
-                key={index}
-                className="rounded-full dark:text-white hover:bg-yellow-400 hover:text-black cursor-pointer duration-500 "
-              >
-                <p className="mx-2 my-1">{data.section}</p>
-              </Link>
-            );
-          })}
+        <div className="flex items-center gap-5">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            className="relative flex h-12 w-12 items-center justify-center rounded-full bg-black/10 dark:bg-white/30 backdrop-blur-sm hover:bg-yellow-400 dark:hover:bg-yellow-400 duration-300 group"
+          >
+            <span className="relative block h-4 w-6">
+              <motion.span
+                className="absolute left-0 h-0.5 w-6 rounded bg-black dark:bg-white group-hover:bg-black"
+                animate={open ? { top: 7, rotate: 45 } : { top: 0, rotate: 0 }}
+                transition={{ duration: 0.4, ease: EASE }}
+              />
+              <motion.span
+                className="absolute left-0 top-[7px] h-0.5 w-6 rounded bg-black dark:bg-white group-hover:bg-black"
+                animate={open ? { opacity: 0, x: 12 } : { opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.span
+                className="absolute left-0 h-0.5 w-6 rounded bg-black dark:bg-white group-hover:bg-black"
+                animate={
+                  open ? { top: 7, rotate: -45 } : { top: 14, rotate: 0 }
+                }
+                transition={{ duration: 0.4, ease: EASE }}
+              />
+            </span>
+          </button>
         </div>
-
-        <ThemeSwitchBTN className="hidden md:flex" />
       </section>
+
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            key="menu"
+            variants={panel}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            aria-label="Main menu"
+            className="fixed inset-0 z-[60] flex h-dvh w-screen flex-col overflow-hidden pt-24 pb-24 bg-white dark:bg-bg_rich_Black text-black dark:text-white"
+          >
+            <div className="pointer-events-none absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-yellow-400/20 blur-[120px]" />
+            <div className="pointer-events-none absolute -bottom-52 -left-40 h-[500px] w-[500px] rounded-full bg-yellow-400/10 blur-[120px]" />
+
+            <motion.ul
+              variants={list}
+              className="relative mx-auto my-auto flex w-full max-w-5xl flex-col gap-[1.5vh] px-8"
+            >
+              {Navs.map((data, index) => (
+                <li key={data.section} className="overflow-hidden">
+                  <motion.div variants={rise}>
+                    <Link
+                      href={data.path ? data.path : `/${data.id}`}
+                      onClick={() => setOpen(false)}
+                      className="group flex items-baseline gap-4 text-[min(8vh,14vw,6.5rem)] leading-[1.1] font-extrabold tracking-tight duration-500 hover:translate-x-4 hover:text-yellow-400"
+                    >
+                      <span className="text-sm font-semibold text-yellow-400 sm:text-base">
+                        0{index + 1}
+                      </span>
+                      {data.section}
+                    </Link>
+                  </motion.div>
+                </li>
+              ))}
+            </motion.ul>
+
+            <motion.div
+              variants={fade}
+              className="absolute bottom-6 left-0 right-0 mx-auto flex w-full max-w-5xl items-center justify-between px-8"
+            >
+              <SocialIcons iconClassName="w-6 h-6" />
+              <ThemeSwitchBTN />
+            </motion.div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </>
   );
 };
