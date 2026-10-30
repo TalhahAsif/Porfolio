@@ -4,6 +4,7 @@ import UseDaily from "@/Component/UseDaily/UseDaily";
 import Projects from "@/Component/Projects/Projects";
 import Contact from "@/Component/Contact/Contact";
 import Header from "@/assets/Headers/header";
+import Reveal from "@/Component/Reveal/Reveal";
 
 export default function Home() {
   return (
@@ -12,12 +13,13 @@ export default function Home() {
         <div className="sm:max-w-[60%] m-auto text-center p-5" id="Home">
           <Header />
 
-          <section
+          <Reveal
+            as="section"
             id="Projects"
-            className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow"
+            className="my-24 dark:text-text_silver"
           >
             <Projects />
-          </section>
+          </Reveal>
         </div>
 
         {/* Services */}
@@ -31,24 +33,28 @@ export default function Home() {
         <div className="sm:max-w-[60%] m-auto text-center p-5">
           {/* //SKILLS */}
 
-          <section
+          <Reveal
+            as="section"
             id="Skill"
-            className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow "
+            className="my-24 dark:text-text_silver"
           >
             <Skills />
-          </section>
+          </Reveal>
 
-          <section className="my-24 dark:text-text_silver  animate__animated animate__fadeIn animate__slow">
+          <Reveal as="section" className="my-24 dark:text-text_silver">
             <UseDaily />
-          </section>
+          </Reveal>
         </div>
 
-        <section
+        <Reveal
+          as="section"
+          pop={false}
+          amount={0.3}
           id="Contect"
-          className="py-10 text-text_silver bg-black dark:bg-slate-900  animate__animated animate__fadeIn animate__slow"
+          className="py-10 text-text_silver bg-black dark:bg-slate-900"
         >
           <Contact />
-        </section>
+        </Reveal>
       </section>
     </div>
   );

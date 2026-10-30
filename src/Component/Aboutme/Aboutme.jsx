@@ -11,6 +11,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Button } from "@/components/ui/button";
 import SocialIcons from "../SocialIcons/SocialIcons";
 import TraitPills from "../TraitPills/TraitPills";
+import Reveal from "@/Component/Reveal/Reveal";
 import { motion } from "framer-motion";
 
 const profileImg =
@@ -47,7 +48,7 @@ const Aboutme = () => {
       className="dark:bg-bg_rich_Black min-h-screen pb-24"
     >
       {/* Cover photo */}
-      <div className="sm:max-w-[70%] m-auto px-5 mt-10">
+      <Reveal className="sm:max-w-[70%] m-auto px-5 mt-10">
         <div className="relative h-48 sm:h-64 md:h-80 rounded-3xl overflow-hidden bg-gradient-to-br from-[#0E0F19] via-[#151830] to-[#0E0F19] border dark:border-gray-800">
           <div
             className="absolute inset-0 opacity-60"
@@ -60,10 +61,10 @@ const Aboutme = () => {
           <div className="absolute -top-16 -left-16 w-72 h-72 bg-yellow-400/25 blur-3xl rounded-full" />
           <div className="absolute -bottom-24 -right-10 w-80 h-80 bg-yellow-400/10 blur-3xl rounded-full" />
         </div>
-      </div>
+      </Reveal>
 
       {/* Profile row, overlapping the cover like a Facebook profile */}
-      <div className="sm:max-w-[70%] m-auto px-5">
+      <Reveal delay={0.1} className="sm:max-w-[70%] m-auto px-5">
         <div className="relative -mt-16 md:-mt-20 flex flex-col md:flex-row md:items-end gap-5 md:gap-8">
           <div className="relative shrink-0 mx-auto md:mx-6">
             <div className="absolute inset-0 rounded-full bg-yellow-400/30 blur-2xl scale-110" />
@@ -106,11 +107,11 @@ const Aboutme = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
 
       {/* Bio + quick facts */}
       <div className="sm:max-w-[70%] m-auto px-5 mt-14 grid md:grid-cols-3 gap-10">
-        <div className="md:col-span-2 flex flex-col gap-4 text-center md:text-left">
+        <Reveal className="md:col-span-2 flex flex-col gap-4 text-center md:text-left">
           <h2 className="text-2xl font-bold dark:text-white">About Me</h2>
           <p className="dark:text-text_silver leading-relaxed">
             I Build Digital Products That Help Businesses Grow I'm a Full Stack
@@ -130,9 +131,9 @@ const Aboutme = () => {
           </p>
 
           <TraitPills className="mt-2" />
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col gap-3">
+        <Reveal delay={0.15} className="flex flex-col gap-3">
           <div className="rounded-2xl border dark:border-gray-800 p-6 flex flex-col gap-4">
             <h3 className="text-lg font-bold dark:text-white">Quick Facts</h3>
             {quickFacts.map(({ icon: Icon, label }) => (
@@ -154,7 +155,7 @@ const Aboutme = () => {
               </section>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </motion.div>
   );

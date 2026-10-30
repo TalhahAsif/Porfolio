@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import Navbar from "@/Component/Navbar/Navbar";
+import Cursor from "@/Component/Cursor/Cursor";
 import { DarkmodeContext } from "@/Contextss/Theme";
 
 const AppShell = ({ children }) => {
@@ -9,6 +10,7 @@ const AppShell = ({ children }) => {
 
   return (
     <div className={darkmode ? "dark" : ""}>
+      <Cursor />
       <div className="dark:bg-bg_rich_Black min-h-screen">
         <Navbar />
 

@@ -1,7 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import LayersRoundedIcon from "@mui/icons-material/LayersRounded";
 import DnsRoundedIcon from "@mui/icons-material/DnsRounded";
 import WebRoundedIcon from "@mui/icons-material/WebRounded";
@@ -71,89 +77,133 @@ const services = [
   },
 ];
 
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } },
+};
+
+const popUp = {
+  hidden: { opacity: 0, y: 70, scale: 0.85 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 140, damping: 16 },
+  },
+};
+
 const ServicesScroll = () => {
-  const scrollRef = useRef(null);
-  const isPaused = useRef(false);
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
+  const distance = useMotionValue(0);
+  const [sectionHeight, setSectionHeight] = useState("100vh");
 
+  // How far the card track has to travel horizontally, and therefore how much
+  // vertical scroll the section needs to stay pinned for.
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    let scrollAmount = 0;
-    let frameId;
-
-    const scrollStep = () => {
-      if (scrollContainer && !isPaused.current) {
-        scrollAmount += 0.6;
-        scrollContainer.scrollLeft = scrollAmount;
-
-        // If reached end, reset to start (seamless loop with clones)
-        if (scrollAmount >= scrollContainer.scrollWidth / 2) {
-          scrollAmount = 0;
-          scrollContainer.scrollLeft = 0;
-        }
-      }
-      frameId = requestAnimationFrame(scrollStep);
+    const measure = () => {
+      const track = trackRef.current;
+      if (!track) return;
+      const travel = Math.max(track.scrollWidth - window.innerWidth, 0);
+      distance.set(travel);
+      setSectionHeight(`calc(100vh + ${travel}px)`);
     };
 
-    frameId = requestAnimationFrame(scrollStep);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(trackRef.current);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [distance]);
 
-    return () => cancelAnimationFrame(frameId);
-  }, []);
-
-  const loopedServices = [...services, ...services];
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    mass: 0.4,
+  });
+  const x = useTransform([progress, distance], ([p, d]) => -p * d);
 
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden bg-gradient-to-b from-transparent via-yellow-400/5 to-transparent dark:via-yellow-400/10 border-y border-black/5 dark:border-white/10">
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-yellow-400/20 blur-[120px]" />
+    <section
+      ref={sectionRef}
+      style={{ height: sectionHeight }}
+      className="relative w-full"
+    >
+      {/* Pinned for as long as the outer section is scrolling */}
+      <div className="sticky top-0 flex h-screen w-full flex-col justify-center overflow-hidden bg-gradient-to-b from-transparent via-yellow-400/5 to-transparent dark:via-yellow-400/10 border-y border-black/5 dark:border-white/10">
+        <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-yellow-400/20 blur-[120px]" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative max-w-2xl mx-auto text-center px-5 mb-14"
-      >
-        <span className="inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm uppercase tracking-widest">
-          <AutoAwesomeRoundedIcon fontSize="small" />
-          Services
-        </span>
-        <h2 className="mt-3 text-3xl md:text-5xl font-extrabold dark:text-white">
-          What I Can Do
-        </h2>
-        <p className="mt-3 dark:text-text_silver text-black/60">
-          From idea to deployment — full-stack solutions built with modern
-          tools and a lot of attention to detail.
-        </p>
-      </motion.div>
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.3 }}
+          className="relative flex flex-col gap-10 pt-16"
+        >
+          <motion.div
+            variants={popUp}
+            className="max-w-2xl mx-auto text-center px-5"
+          >
+            <span className="inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm uppercase tracking-widest">
+              <AutoAwesomeRoundedIcon fontSize="small" />
+              Services
+            </span>
+            <h2 className="mt-3 text-3xl md:text-5xl font-extrabold dark:text-white">
+              What I Can Do
+            </h2>
+            <p className="mt-3 dark:text-text_silver text-black/60">
+              From idea to deployment — full-stack solutions built with modern
+              tools and a lot of attention to detail.
+            </p>
+          </motion.div>
 
-      <div
-        ref={scrollRef}
-        onMouseEnter={() => (isPaused.current = true)}
-        onMouseLeave={() => (isPaused.current = false)}
-        className="relative flex w-full overflow-x-scroll scrollbar-hide whitespace-nowrap py-4 [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
-      >
-        {loopedServices.map((data, index) => {
-          const Icon = data.icon;
-          return (
+          <div className="relative w-full [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
             <motion.div
-              key={index}
-              whileHover={{ y: -8, scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group flex-none mx-4 w-72 whitespace-normal backdrop-blur-sm bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-2xl shadow-lg hover:shadow-yellow-400/20 hover:border-yellow-400/50 transition-shadow duration-300"
+              ref={trackRef}
+              style={{ x }}
+              className="flex w-max gap-8 px-[8vw] py-6 will-change-transform"
             >
-              <div className="p-6 flex flex-col gap-4">
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-400/15 text-yellow-500 dark:text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-colors duration-300">
-                  <Icon fontSize="medium" />
-                </div>
-                <p className="font-bold text-lg dark:text-white text-left">
-                  {data.title}
-                </p>
-                <p className="text-sm text-black/60 dark:text-text_silver text-left leading-relaxed">
-                  {data.description}
-                </p>
-              </div>
+              {services.map((data) => {
+                const Icon = data.icon;
+                return (
+                  <motion.div
+                    key={data.id}
+                    variants={popUp}
+                    whileHover={{ y: -8, scale: 1.03 }}
+                    className="group flex-none w-72 backdrop-blur-sm bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-2xl shadow-lg hover:shadow-yellow-400/20 hover:border-yellow-400/50 transition-shadow duration-300"
+                  >
+                    <div className="p-6 flex flex-col gap-4">
+                      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-400/15 text-yellow-500 dark:text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-colors duration-300">
+                        <Icon fontSize="medium" />
+                      </div>
+                      <p className="font-bold text-lg dark:text-white text-left">
+                        {data.title}
+                      </p>
+                      <p className="text-sm text-black/60 dark:text-text_silver text-left leading-relaxed">
+                        {data.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </motion.div>
-          );
-        })}
+          </div>
+
+          {/* scroll progress */}
+          <motion.div variants={popUp} className="mx-auto w-48 h-1 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+            <motion.div
+              style={{ scaleX: progress }}
+              className="h-full origin-left rounded-full bg-yellow-400"
+            />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
