@@ -25,7 +25,7 @@ const TraitPills = ({ className = "" }) => {
         >
           <Icon
             fontSize="small"
-            className="text-yellow-400 group-hover:text-blue-300 group-hover:animate-shake"
+            className="text-blue-500 group-hover:text-blue-300 group-hover:animate-shake"
           />
           {label}
         </span>

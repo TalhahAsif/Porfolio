@@ -137,8 +137,15 @@ const ServicesScroll = () => {
       className="relative w-full"
     >
       {/* Pinned for as long as the outer section is scrolling */}
-      <div className="sticky top-0 flex h-screen w-full flex-col justify-center overflow-hidden bg-gradient-to-b from-transparent via-yellow-400/5 to-transparent dark:via-yellow-400/10 border-y border-black/5 dark:border-white/10">
-        <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-yellow-400/20 blur-[120px]" />
+      <div className="sticky top-0 flex h-screen w-full flex-col justify-center overflow-hidden">
+        {/* Background layer, faded out at the top and bottom so it melts into neighbouring sections */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]"
+        >
+          <div className="absolute inset-0 bg-blue-500/5 dark:bg-blue-500/10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-blue-500/20 blur-[120px]" />
+        </div>
 
         <motion.div
           variants={container}
@@ -151,7 +158,7 @@ const ServicesScroll = () => {
             variants={popUp}
             className="max-w-2xl mx-auto text-center px-5"
           >
-            <span className="inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm uppercase tracking-widest">
+            <span className="inline-flex items-center gap-2 text-blue-500 font-semibold text-sm uppercase tracking-widest">
               <AutoAwesomeRoundedIcon fontSize="small" />
               Services
             </span>
@@ -177,10 +184,10 @@ const ServicesScroll = () => {
                     key={data.id}
                     variants={popUp}
                     whileHover={{ y: -8, scale: 1.03 }}
-                    className="group flex-none w-72 backdrop-blur-sm bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-2xl shadow-lg hover:shadow-yellow-400/20 hover:border-yellow-400/50 transition-shadow duration-300"
+                    className="group flex-none w-72 backdrop-blur-sm bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:border-blue-500/50 transition-shadow duration-300"
                   >
                     <div className="p-6 flex flex-col gap-4">
-                      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-400/15 text-yellow-500 dark:text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-colors duration-300">
+                      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-500/15 text-blue-600 dark:text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
                         <Icon fontSize="medium" />
                       </div>
                       <p className="font-bold text-lg dark:text-white text-left">
@@ -200,7 +207,7 @@ const ServicesScroll = () => {
           <motion.div variants={popUp} className="mx-auto w-48 h-1 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
             <motion.div
               style={{ scaleX: progress }}
-              className="h-full origin-left rounded-full bg-yellow-400"
+              className="h-full origin-left rounded-full bg-blue-500"
             />
           </motion.div>
         </motion.div>
